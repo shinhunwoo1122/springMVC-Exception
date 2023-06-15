@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.Controller;
 
 @Slf4j
-@RestControllerAdvice(basePackages = "hello.exception.api")
+/*@RestControllerAdvice(basePackages = "hello.exception.api")*/
+@RestControllerAdvice(annotations = RestController.class)
 public class ExControllerAdvice {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -18,6 +19,7 @@ public class ExControllerAdvice {
         log.error("[exceptionHandler] ex", e);
         return new ErrorResult("BAD", e.getMessage());
     }
+
 
     @ExceptionHandler
     public ResponseEntity<ErrorResult> userExHandler(UserException e){

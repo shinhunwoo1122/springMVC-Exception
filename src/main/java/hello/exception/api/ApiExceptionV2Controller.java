@@ -1,12 +1,10 @@
 package hello.exception.api;
 
-import hello.exception.exHandler.ErrorResult;
 import hello.exception.excepton.UserException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -54,6 +52,12 @@ public class ApiExceptionV2Controller {
         return new MemberDto(id, "hello" + id);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/main", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonMain(){
+
+        return "이건 json 요청임";
+    }
 
     @Data
     @AllArgsConstructor
